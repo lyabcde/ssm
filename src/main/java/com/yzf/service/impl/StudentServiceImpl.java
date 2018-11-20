@@ -23,6 +23,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int save(User user) {
+        userMapper.insertSelective(user);
         return 0;
     }
 }

@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.yzf.controller","com.yzf.config"},includeFilters = {@Filter(type= FilterType.ANNOTATION,classes={Controller.class}),
         @Filter(type=FilterType.ASSIGNABLE_TYPE,classes={PropertyConfig.class})},useDefaultFilters = false)
-public class DispatcherConfig extends WebMvcConfigurerAdapter  {
+public class DispatcherConfig {
 
     @Autowired
     private  PropertyConfig propertyConfig;

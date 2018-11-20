@@ -2,9 +2,8 @@ package com.yzf.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
+import tk.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.*;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
@@ -23,8 +22,8 @@ import java.io.IOException;
  **/
 @Configuration //表明此类是配置类
 @ComponentScan(basePackages = "com.yzf", excludeFilters = {@Filter(type= FilterType.ANNOTATION,classes={Controller.class})}) // 扫描自定义的组件(repository service component controller)
-//@PropertySource("classpath:application.properties") // 读取application.properties
-@MapperScan("com.yzf.dao") //扫描Mybatis的Mapper接口
+@MapperScan(value = "com.yzf.dao", properties = {"mappers=tk.mybatis.mapper.common.Mapper",
+        "notEmpty=true"}) //扫描Mybatis的Mapper接口
 @EnableTransactionManagement //开启事务管理
 public class AppConfig {
 

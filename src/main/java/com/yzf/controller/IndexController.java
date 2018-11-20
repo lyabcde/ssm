@@ -1,5 +1,6 @@
 package com.yzf.controller;
 
+import com.yzf.common.ReturnValue;
 import com.yzf.entity.User;
 import com.yzf.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,14 @@ public class IndexController {
         List<User> list = studentService.selectAll();
         return list;
     }
+
+    @RequestMapping(value="/b", method = RequestMethod.POST)
+    @ResponseBody
+    public ReturnValue b(@RequestBody User user) {
+        ReturnValue value = ReturnValue.newInstance();
+        studentService.save(user);
+        value.put("success", true);
+        return value;
+    }
+
 }
